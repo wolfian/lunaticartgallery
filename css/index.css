@@ -1,0 +1,364 @@
+.home {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 0.7fr 8fr 0.3fr;
+  grid-template-areas:
+    "nav nav nav"
+    "card gallery gallery"
+    "footer footer footer";
+  /* opacity: 0; */
+}
+
+.slider {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  min-height: 100%;
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1f
+  );
+  z-index: -1;
+}
+
+.nav {
+  /* background-color: orange; */
+  grid-area: nav;
+}
+
+.nav h1 {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  padding-bottom: 10px;
+  margin: 1%;
+  opacity: 0.8;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.8);
+}
+
+.container1 {
+  /* background-color: red; */
+  grid-area: card;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width: 400px;
+  height: 600px;
+  /* margin: 0% auto 5% auto; */
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px;
+  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 800;
+}
+
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card figure {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backface-visibility: hidden;
+}
+
+.card figure p {
+  font-family: sans-serif;
+  font-weight: 500;
+  text-align: center;
+  margin: 2% 10%;
+}
+
+.card .front h1 {
+  font-family: "Raleway", sans-serif;
+  margin: 2% 0;
+  padding: 20px 0;
+}
+
+.card .front p {
+  font-size: 18px;
+}
+
+.card .front {
+  background: linear-gradient(90deg, #ffffff 0%, #e4ccf8 100%);
+  color: #383838;
+}
+
+.card .front img {
+  border-radius: 100%;
+  margin: 2% 0;
+}
+
+.card .back {
+  background-image: url(../images/illustration-digital-art-abstract-low-poly-sphere-symmetry-262809-wallhere.com-a.jpg);
+  background-position: top left;
+  background-size: 350%;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card .back h2 {
+  font-family: "Raleway", sans-serif;
+  padding: 50px 0 0 0;
+}
+
+.card .back p {
+  padding: 10px 0 50px 0;
+  font-size: 18px;
+}
+
+.card .back .social {
+  font-size: 24px;
+}
+
+.social a:link {
+  color: white;
+}
+.social a:visited {
+  color: white;
+}
+.social a:hover {
+  color: #3e1a3e;
+}
+.social a:active {
+  color: white;
+}
+
+.order-button {
+  color: #3e1a3e;
+  background-color: white;
+  border: none;
+  padding: 15px 30px;
+  margin-top: -20px;
+  font-size: 14px;
+}
+
+.order-button:hover {
+  background-color: #3e1a3e;
+  color: white;
+  border: 1px solid white;
+  padding: 14px 30px;
+}
+
+.container2 {
+  background-color: rgba(255, 255, 255, 0.9);
+  grid-area: gallery;
+  margin: auto 2%;
+  border-radius: 15px;
+}
+
+.gallery {
+  /* visibility: hidden; */
+  /* border-left: 3px solid rgba(255, 2255, 255, 0.7); */
+  height: 80vh;
+  padding: 2%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: rgba(128, 128, 128, 0.5) rgba(255, 2255, 255, 0);
+}
+
+.gallery img {
+  width: 100%;
+  opacity: 0.9;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.footer {
+  /* background-color: green; */
+  grid-area: footer;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  color: rgba(255, 2255, 255, 0.8);
+}
+
+.modal {
+  /* display: flex; */
+  background: rgba(245, 245, 245, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column; */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease-out;
+}
+.modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.full-img {
+  position: absolute;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: all 0.25s ease-out;
+}
+
+.full-img.open {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 1000px) {
+  .home {
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 8fr 8fr 0.3fr;
+    grid-template-areas:
+      "nav"
+      "card"
+      "gallery"
+      "footer";
+  }
+  .nav h1 {
+    text-align: center;
+  }
+  .nav {
+    padding-top: 2%;
+  }
+  .card-container {
+    margin-top: -5%;
+  }
+  .slider {
+    height: 100%;
+  }
+}
+/* 
+@media (max-width: 600px) {
+  .slider {
+    height: 180%;
+  }
+}
+*/
+@media (max-height: 900px) {
+  .container1,
+  .gallery {
+    min-height: 700px;
+    height: 700px;
+  }
+}
+
+/* @media (max-height: 800px) {
+  .container1,
+  .gallery {
+    min-height: 700px;
+    height: 700px;
+  }
+  .slider {
+    height: 245%;
+  }
+}  */
+
+/*  ! PRELOADER ANIMATION */
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #6f45c6;
+  letter-spacing: 0.2em;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #df306e;
+  position: absolute;
+  -webkit-animation: load 0.7s infinite alternate ease-in-out;
+  animation: load 0.7s infinite alternate ease-in-out;
+}
+.loader::before {
+  top: 0;
+}
+.loader::after {
+  bottom: 0;
+}
+
+@-webkit-keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}
+
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}
