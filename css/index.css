@@ -317,7 +317,7 @@
   display: block;
   width: 15px;
   height: 15px;
-  background: ##DF306E;
+  background: #DF306E;
   position: absolute;
   -webkit-animation: load 0.7s infinite alternate ease-in-out;
   animation: load 0.7s infinite alternate ease-in-out;
